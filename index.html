@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fortify - Password Generator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="card">
+    <header class="brand">
+      <svg viewBox="0 0 24 24" width="34" height="34" aria-hidden="true">
+        <path d="M12 2 4 5v6c0 5 3.4 9.4 8 11 4.6-1.6 8-6 8-11V5l-8-3z" fill="none" stroke="currentColor" stroke-width="1.6"/>
+        <path d="M12 2v20c4.6-1.6 8-6 8-11V5l-8-3z" fill="currentColor" opacity=".35"/>
+      </svg>
+      <div>
+        <h1>FORTIFY</h1>
+        <p>PASSWORD GENERATOR</p>
+      </div>
+    </header>
+
+    <div class="output">
+      <input id="password" type="text" readonly aria-label="Generated password">
+      <button id="copy" class="copy" type="button" aria-label="Copy password">
+        <svg viewBox="0 0 24 24" width="22" height="22"><rect x="8" y="8" width="12" height="12" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+        <span id="copyLabel">Copy</span>
+      </button>
+    </div>
+
+    <div class="strength">
+      <div class="strength-head">
+        <span>Password Strength</span>
+        <strong id="strengthText">-</strong>
+      </div>
+      <div class="bars" id="bars">
+        <i></i><i></i><i></i><i></i><i></i>
+      </div>
+      <small id="entropy"></small>
+    </div>
+
+    <section class="options">
+      <h2>OPTIONS</h2>
+      <div class="length-row">
+        <label for="length">Length</label>
+        <output id="lengthValue">16</output>
+      </div>
+      <input id="length" type="range" min="8" max="64" value="16">
+
+      <label class="toggle"><span>Lowercase (a-z)</span><input id="lower" type="checkbox" checked><i></i></label>
+      <label class="toggle"><span>Uppercase (A-Z)</span><input id="upper" type="checkbox" checked><i></i></label>
+      <label class="toggle"><span>Numbers (0-9)</span><input id="numbers" type="checkbox" checked><i></i></label>
+      <label class="toggle"><span>Symbols (!@#$)</span><input id="symbols" type="checkbox" checked><i></i></label>
+      <label class="toggle"><span>Exclude similar (O 0 l 1 I)</span><input id="similar" type="checkbox"><i></i></label>
+    </section>
+
+    <p id="error" class="error" role="alert"></p>
+    <button id="generate" class="generate" type="button">Generate New Password</button>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>

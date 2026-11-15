@@ -1,0 +1,83 @@
+:root {
+  --bg: #0e1116;
+  --card: #151a21;
+  --line: #28303b;
+  --text: #e8edf3;
+  --muted: #8b96a5;
+  --green: #19e07a;
+  --red: #b3261e;
+  --red-glow: rgba(255, 70, 60, .35);
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  background: radial-gradient(circle at 50% 0%, #1b2330 0%, var(--bg) 60%);
+  color: var(--text);
+  font-family: "Segoe UI", system-ui, sans-serif;
+}
+.card {
+  width: 100%;
+  max-width: 440px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 26px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, .5);
+}
+.brand { display: flex; align-items: center; gap: 12px; color: var(--text); margin-bottom: 22px; }
+.brand h1 { margin: 0; font-size: 20px; letter-spacing: 2px; }
+.brand p { margin: 2px 0 0; font-size: 10px; letter-spacing: 2px; color: var(--muted); }
+
+.output {
+  display: flex; align-items: center; gap: 10px;
+  background: #0f141a; border: 1px solid var(--line); border-radius: 10px;
+  padding: 10px 14px;
+}
+.output input {
+  flex: 1; min-width: 0; background: transparent; border: 0; outline: 0;
+  color: var(--text); font: 600 20px "Consolas", monospace;
+}
+.copy {
+  display: flex; flex-direction: column; align-items: center; gap: 2px;
+  background: none; border: 0; color: var(--muted); font-size: 11px; cursor: pointer;
+}
+.copy:hover { color: var(--text); }
+
+.strength { margin: 20px 0 8px; }
+.strength-head { display: flex; justify-content: space-between; color: var(--muted); font-size: 14px; margin-bottom: 8px; }
+.strength-head strong { color: var(--green); transition: color .2s; }
+.bars { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; }
+.bars i { height: 12px; border-radius: 4px; background: #232b35; transition: background .2s; }
+.strength small { display: block; margin-top: 6px; color: var(--muted); font-size: 12px; }
+
+.options h2 { font-size: 12px; letter-spacing: 2px; color: var(--muted); margin: 18px 0 10px; font-weight: 500; }
+.length-row { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 14px; }
+.length-row output { color: var(--muted); }
+input[type="range"] { width: 100%; accent-color: var(--red); margin-bottom: 14px; }
+
+.toggle { display: flex; justify-content: space-between; align-items: center; padding: 9px 0; font-size: 14px; cursor: pointer; }
+.toggle input { display: none; }
+.toggle i {
+  position: relative; width: 46px; height: 24px; border-radius: 12px;
+  background: #2b333e; border: 1px solid var(--line); transition: background .2s;
+}
+.toggle i::after {
+  content: ""; position: absolute; top: 3px; left: 3px; width: 16px; height: 16px;
+  border-radius: 50%; background: #cfd6df; transition: transform .2s;
+}
+.toggle input:checked + i { background: rgba(25, 224, 122, .25); border-color: var(--green); }
+.toggle input:checked + i::after { transform: translateX(22px); background: var(--green); }
+
+.error { min-height: 18px; margin: 8px 0 0; color: #ff6b61; font-size: 13px; }
+.generate {
+  width: 100%; margin-top: 6px; padding: 14px; cursor: pointer;
+  background: #6b1713; color: var(--text); border: 1px solid #c0392b; border-radius: 10px;
+  font: 700 16px "Consolas", monospace; letter-spacing: .5px;
+  box-shadow: 0 0 22px var(--red-glow); transition: transform .1s, background .2s;
+}
+.generate:hover { background: #7d1b16; }
+.generate:active { transform: scale(.98); }
